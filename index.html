@@ -1,0 +1,23 @@
+<html ng-app>
+<head>
+    <title>Actuate JSAPI angular example</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="JSAPIController">
+        <div id="viewer"></div> 
+    </div>
+    <script type="text/javascript">
+        function JSAPIController($scope) {
+            var showReport = function showReport( ) {
+                var myViewer = new actuate.Viewer( "viewer" );
+                myViewer.setReportName("/Demo/Monthly Revenue Analysis.rptdocument");
+                myViewer.submit();
+            };
+            actuate.load("viewer");
+            actuate.initialize( "http://vmcip2.actuate.com:8700/iportal", null,null, null, showReport);
+        }
+    </script>
+    <script src="http://vmcip2.actuate.com:8700/iportal/jsapi"></script>
+</body>
+</html>
